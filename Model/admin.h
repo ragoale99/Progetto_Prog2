@@ -5,7 +5,7 @@
 class Admin : public Account{
 public:
     Admin();
-    Admin(QString us, QString pw);
+    Admin(string us, string pw);
     acc getType();
 };
 

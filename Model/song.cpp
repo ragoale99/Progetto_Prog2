@@ -1,7 +1,26 @@
 #include "song.h"
+#include <iostream>
+string Song::getLyrics() const{
+    return lyrics;
+}
 
-Song::Song(QString t, int y, int m, int d, QString p, QString s, QString w, QString l) : title(t), year(y), month(m), day(d), prod(p), singer(s), writer(w), lyrics(l){
+string Song::getWriter() const{
+    return writer;
+}
 
+string Song::getSinger() const{
+    return singer;
+}
+
+string Song::getProd() const{
+    return prod;
+}
+
+string Song::getTitle() const{
+    return title;
+}
+
+Song::Song(string t, int y, int m, int d, string p, string s, string w, string l) : title(t), year(y), month(m), day(d), prod(p), singer(s), writer(w), lyrics(l){
 }
 
 Song &Song::operator =(const Song & s){
@@ -22,5 +41,15 @@ bool Song::operator !=(const Song & s){
 }
 
 std::ostream &operator<<(std::ostream& os, const Song & s){
-    return os<<"Titolo: "<<s.title<<", Data:"<<s.year<<":"<<s.month<<":"<<s.day;
+    os<<"Title: "<<s.title<<", Date: "<<s.year<<":"<<s.month<<":"<<s.day<<", Producer: "<<s.prod<<", Singer: ";
+    if (s.singer=="")
+        os<<"NULL";
+    else
+        os<<s.singer;
+    os<<", Writer: ";
+    if (s.writer=="")
+        os<<"NULL";
+    else
+        os<<s.writer;
+    return os;
 }

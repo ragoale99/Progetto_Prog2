@@ -1,21 +1,21 @@
 #include "singer.h"
-
+#include <iostream>
 Singer::Singer(){
 
 }
 
-Singer::Singer(QString us, QString pw, QString lbl) : Artist(us,pw,lbl){
+Singer::Singer(string us, string pw, string lbl) : Account(us,pw,artist), Artist(us,pw,lbl){
 
 }
 
-acc Singer::getType(){
-    return Artist::getType();
+bool Singer::insertSong(string title, int y, int m, int d, std::string prod, std::string write){
+    Song* s = new Song(title, y, m, d, prod, username, write);
+    vector<Song*>::iterator it = searchSong(*s);
+    if(it == songs.end()){
+        songs.push_back(s);
+        return true;
+    }else
+        return false;
 }
 
-void Singer::insertSong(QString title, int y, int m, int d){
-    songs.push_back(new Song(title, y, m, d, "prod", username, "writer"));
-}
 
-
-void Singer::deleteSong(Song s){
-}

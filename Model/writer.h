@@ -5,11 +5,8 @@
 class Writer : virtual public Artist {
 public:
     Writer();
-    Writer(QString us, QString pw, QString lbl);
-    acc getType();
-    virtual void insertSong(Song s);
-    virtual void deleteSong(Song s);
-
+    Writer(string us, string pw, string lbl);
+    virtual bool insertSong(std::string title, int y, int m, int d, string prod, string sing);
 };
 
 #endif // WRITER_H

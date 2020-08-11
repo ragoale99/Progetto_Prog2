@@ -5,10 +5,8 @@
 class Singer : virtual public Artist{
 public:
     Singer();
-    Singer(QString us, QString pw, QString lbl);
-    acc getType();
-    virtual void insertSong(QString title, int y, int m, int d);
-    virtual void deleteSong(Song s);
+    Singer(string us, string pw, string lbl);
+    virtual bool insertSong(std::string title, int y, int m, int d, string prod, string write);
 };
 
 #endif // SINGER_H

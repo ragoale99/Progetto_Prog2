@@ -5,10 +5,8 @@
 class Producer : public Artist {
 public:
     Producer();
-    Producer(QString us, QString pw, QString lbl);
-    //acc getType() const;
-    virtual void insertSong(QString title, int y, int m, int d);
-    virtual void deleteSong(Song s);
+    Producer(string us, string pw, string lbl);
+    bool insertSong(string title, int y, int m, int d, string sing="", string write="");
 };
 
 #endif // PRODUCER_H

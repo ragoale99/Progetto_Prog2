@@ -4,7 +4,7 @@ Admin::Admin(){
 
 }
 
-Admin::Admin(QString us, QString pw) : Account(us,pw,admin){
+Admin::Admin(std::string us, std::string pw) : Account(us,pw,admin){
 
 }
 

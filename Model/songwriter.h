@@ -5,10 +5,8 @@
 
 class SongWriter : public Writer, public Singer{
 public:
-    SongWriter(QString us, QString pw,  QString lbl);
-    acc getType();
-    virtual void insertSong(Song s);
-    virtual void deleteSong(Song s);
+    SongWriter(string us, string pw,  string lbl);
+    virtual bool insertSong(std::string title, int y, int m, int d, string prod, string);
 };
 
 #endif // SONGWRITER_H

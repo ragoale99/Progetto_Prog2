@@ -1,26 +1,14 @@
 #include "producer.h"
 
-Producer::Producer(){
+Producer::Producer(string us, string pw, string lbl) : Account(us,pw,artist), Artist(us,pw,lbl){}
 
+bool Producer::insertSong(string title, int y, int m, int d, std::string sing, std::string write){
+    Song* s = new Song(title, y, m, d, username, sing, write);
+    vector<Song*>::iterator it = searchSong(*s);
+    if(it == songs.end()){
+        songs.push_back(s);
+        return true;
+    }else
+        return false;
 }
 
-Producer::Producer(QString us, QString pw, QString lbl) : Artist(us,pw,lbl){
-
-}
-
-/*acc Producer::getType() const{
-    return Artist::getType();
-}*/
-
-void Producer::insertSong(QString title, int y, int m, int d){
-    songs.push_back(new Song(title, y, m, d, username));
-}
-
-void Producer::deleteSong(Song s){
-    vector<Song*>::const_iterator it;
-    while (it != songs.end() && s != *(*it)){
-        it++;
-    }
-    if (it != songs.end())
-        songs.erase(it);
-}

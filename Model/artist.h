@@ -1,22 +1,19 @@
 #ifndef ARTIST_H
 #define ARTIST_H
 #include "account.h"
-#include "songs.h"
+#include "song.h"
 #include <vector>
 using std::vector;
 
 class Artist : virtual public Account{
 private:
-    QString label;
-protected:
-    vector<Song*> songs;
+    string label;
 public:
     Artist();
-    Artist(QString us, QString pw, QString lbl);
+    Artist(string us, string pw, string lbl);
     virtual acc getType();
-    virtual void insertSong(QString title, int y, int m, int d) = 0;
-    virtual void deleteSong(Song s) = 0;
-    vector<Song*> getSongs() const;
+    virtual bool insertSong(string title, int y, int m, int d, string = "", string = "") = 0;
+    virtual bool deleteSong(Song s);
 };
 
 #endif // ARTIST_H
