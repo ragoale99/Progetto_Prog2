@@ -15,7 +15,6 @@ public:
     // gestione della copia,assegnazione e distruzione profonda
     ~Container();                                       // distruttore profondo
     Container(const Container&);                        // costruttore di copia profonda (forse non viene nemmeno mai utilizzato)
-    Container& operator=(const Container&);             // overl. del operatore =  per l'assegnazione profonda (forse non viene nemmeno mai utilizzato)
 
     unsigned int getSize() const;                       // restituisce il numero di elementi memorizzati
     void push_back(const T&);                           // inserisce un elemento dal fondo
@@ -50,9 +49,9 @@ public:
        constiterator();
        constiterator(T*);
        constiterator& operator ++();
-       constiterator& operator ++(int);
+       constiterator operator ++(int);
        constiterator& operator --();
-       constiterator& operator --(int);
+       constiterator operator --(int);
        const T& operator *() const;
        const T* operator ->() const;
        bool operator ==(const constiterator&) const;
@@ -75,20 +74,7 @@ template<class T>
 Container<T>::Container(const Container& c) : ptr(c.ptr), size(c.size), dim(c.dim) {}
 
 template<class T>
-Container& Container<T>::operator =(const Container& c) {
-    if(this != &c) {
-        delete[] ptr;
-        ptr = c.size == 0 ? nullptr : new T[c.size];
-        for(unsigned int i = 0; i<c.size; i++)
-            ptr[i] = c.ptr[i];
-        size = c.size;
-        dim = c.dim;
-    }
-    return *this;
-}
-
-template<class T>
-T& Container<T>::operator [](unsigned int i) {
+T& Container<T>::operator [](unsigned int i) const {
     return ptr[i];
 }
 
@@ -128,45 +114,45 @@ void Container<T>::pop(unsigned int i) {
 }
 
 template<class T>
-Container<T>::begin() const {
+typename::Container<T>::constiterator Container<T>::begin() const {
     return constiterator(ptr);
 }
 
 template<class T>
-Container<T>::end() const {
+typename::Container<T>::constiterator Container<T>::end() const {
     return constiterator(ptr + size);
 }
 
     // iteratore
 template<class T>
-Container<T>::iterator() : punt(nullptr) {}
+Container<T>::iterator::iterator() : punt(nullptr) {}
 
 template<class T>
-Container<T>::iterator(T* p) : punt(p) {}
+Container<T>::iterator::iterator(T* p) : punt(p) {}
 
 template<class T>
-T* Container<T>::iterator::operator ++() {
+typename::Container<T>::iterator& Container<T>::iterator::operator ++() {
     punt++;
     return *this;
 }
 
 template<class T>
-T* Container<T>::iterator::operator ++(int) {
+typename::Container<T>::iterator Container<T>::iterator::operator ++(int) {
     iterator temp = *this;
-    ++*this;
+    ++(*this);
     return temp;
 }
 
 template<class T>
-T* Container<T>::iterator::operator --() {
+typename::Container<T>::iterator& Container<T>::iterator::operator --() {
     punt--;
     return *this;
 }
 
 template<class T>
-T* Container<T>::iterator::operator --(int) {
+typename::Container<T>::iterator Container<T>::iterator::operator --(int) {
     iterator temp = *this;
-    --*this;
+    --(*this);
     return temp;
 }
 
@@ -192,32 +178,32 @@ bool Container<T>::iterator::operator !=(const iterator& i) const {
 
     // iteratore costante
 template<class T>
-Container<T>::constiterator() : punt(nullptr) {}
+Container<T>::constiterator::constiterator() : punt(nullptr) {}
 
 template<class T>
-Container<T>::constiterator(T* p) : punt(p) {}
+Container<T>::constiterator::constiterator(T* p) : punt(p) {}
 
 template<class T>
-T* Container<T>::constiterator::operator ++() {
+typename::Container<T>::constiterator& Container<T>::constiterator::operator ++() {
     punt++;
     return *this;
 }
 
 template<class T>
-T* Container<T>::constiterator::operator ++(int) {
+typename::Container<T>::constiterator Container<T>::constiterator::operator ++(int) {
     iterator temp = *this;
     ++*this;
     return temp;
 }
 
 template<class T>
-T* Container<T>::constiterator::operator --() {
+typename::Container<T>::constiterator& Container<T>::constiterator::operator --() {
     punt--;
     return *this;
 }
 
 template<class T>
-T* Container<T>::constiterator::operator --(int) {
+typename::Container<T>::constiterator Container<T>::constiterator::operator --(int) {
     iterator temp = *this;
     --*this;
     return temp;
@@ -226,19 +212,4 @@ T* Container<T>::constiterator::operator --(int) {
 template<class T>
 const T& Container<T>::constiterator::operator *() const {
     return *punt;
-}
-
-template<class T>
-const T* Container<T>::constiterator::operator ->() const {
-    return punt;
-}
-
-template<class T>
-bool Container<T>::constiterator::operator ==(const constiterator& c) const {
-    return c.punt == punt;
-}
-
-template<class T>
-bool Container<T>::constiterator::operator !=(const constiterator& c) const {
-    return c.punt != punt;
 }
