@@ -6,7 +6,7 @@ class Admin : public Account{
 public:
     Admin();
     Admin(string us, string pw);
-    acc getType();
+    acc getType() const;
 };
 
 #endif // ADMIN_H

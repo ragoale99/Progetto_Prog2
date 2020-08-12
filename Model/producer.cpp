@@ -2,7 +2,7 @@
 
 Producer::Producer(string us, string pw, string lbl) : Account(us,pw,artist), Artist(us,pw,lbl){}
 
-bool Producer::insertSong(string title, int y, int m, int d, std::string sing, std::string write){
+bool Producer::insertSong(string title, int y, int m, int d, std::string sing, std::string write) const{
     Song* s = new Song(title, y, m, d, username, sing, write);
     vector<Song*>::iterator it = searchSong(*s);
     if(it == songs.end()){
@@ -12,3 +12,6 @@ bool Producer::insertSong(string title, int y, int m, int d, std::string sing, s
         return false;
 }
 
+bool Producer::insertSong(const Song& s) const{
+    return insertSong(s.getTitle(),s.getYear(),s.getMonth(),s.getDay(), s.getSinger(), s.getWriter());
+}

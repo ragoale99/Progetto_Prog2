@@ -20,6 +20,21 @@ string Song::getTitle() const{
     return title;
 }
 
+int Song::getYear() const
+{
+    return year;
+}
+
+int Song::getMonth() const
+{
+    return month;
+}
+
+int Song::getDay() const
+{
+    return day;
+}
+
 Song::Song(string t, int y, int m, int d, string p, string s, string w, string l) : title(t), year(y), month(m), day(d), prod(p), singer(s), writer(w), lyrics(l){
 }
 
@@ -32,11 +47,11 @@ Song &Song::operator =(const Song & s){
     return *this;
 }
 
-bool Song::operator ==(const Song & s){
+bool Song::operator ==(const Song & s) const{
     return title == s.title && prod == s.prod && singer == s.singer && writer == s.writer && lyrics == s.lyrics;
 }
 
-bool Song::operator !=(const Song & s){
+bool Song::operator !=(const Song & s) const{
     return title != s.title || prod != s.prod || singer != s.singer || writer != s.writer || lyrics != s.lyrics;
 }
 

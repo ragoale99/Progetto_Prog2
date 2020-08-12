@@ -6,7 +6,8 @@ class Singer : virtual public Artist{
 public:
     Singer();
     Singer(string us, string pw, string lbl);
-    virtual bool insertSong(std::string title, int y, int m, int d, string prod, string write);
+    virtual bool insertSong(std::string title, int y, int m, int d, string prod, string write) const;
+    bool insertSong(const Song& s) const;
 };
 
 #endif // SINGER_H

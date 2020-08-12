@@ -6,7 +6,8 @@
 class SongWriter : public Writer, public Singer{
 public:
     SongWriter(string us, string pw,  string lbl);
-    virtual bool insertSong(std::string title, int y, int m, int d, string prod, string);
+    virtual bool insertSong(std::string title, int y, int m, int d, string prod, string empty) const;
+    bool insertSong(const Song& s) const;
 };
 
 #endif // SONGWRITER_H

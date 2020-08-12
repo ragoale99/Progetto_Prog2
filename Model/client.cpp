@@ -4,7 +4,7 @@ Client::Client(std::string us, std::string pw) : Account(us,pw,client){
 
 }
 
-acc Client::getType(){
+acc Client::getType() const{
     return client;
 }
 

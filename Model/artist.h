@@ -11,9 +11,10 @@ private:
 public:
     Artist();
     Artist(string us, string pw, string lbl);
-    virtual acc getType();
-    virtual bool insertSong(string title, int y, int m, int d, string = "", string = "") = 0;
-    virtual bool deleteSong(Song s);
+    virtual acc getType() const;
+    virtual bool insertSong(string title, int y, int m, int d, string = "", string = "") const= 0;
+    virtual bool insertSong(const Song& s) const = 0;
+    virtual bool deleteSong(const Song& s) const;
 };
 
 #endif // ARTIST_H

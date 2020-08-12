@@ -13,15 +13,18 @@ private:
     string writer;
     string lyrics;
 public:
-    Song(string t = "Title", int y=2000, int m=1, int d=1, string p = "", string s = "", string w = "", string l = "");
+    Song(string t, int y, int m, int d, string p, string s="", string w = "", string l="");
     Song& operator =(const Song&);
-    bool operator ==(const Song &);
-    bool operator !=(const Song &);
+    bool operator ==(const Song &) const;
+    bool operator !=(const Song &) const;
     string getLyrics() const;
     string getWriter() const;
     string getSinger() const;
     string getProd() const;
     string getTitle() const;
+    int getYear() const;
+    int getMonth() const;
+    int getDay() const;
 };
 std::ostream& operator<< (std::ostream&, const Song&);
 

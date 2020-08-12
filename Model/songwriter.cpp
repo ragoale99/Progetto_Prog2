@@ -4,7 +4,7 @@ SongWriter::SongWriter(string us,  string pw, string lbl) : Account(us,pw,artist
 
 }
 
-bool SongWriter::insertSong(std::string title, int y, int m, int d, std::string prod, std::string st){
+bool SongWriter::insertSong(std::string title, int y, int m, int d, std::string prod, std::string empty) const{
     Song* s = new Song(title, y, m, d, prod, username, username);
     vector<Song*>::iterator it = searchSong(*s);
     if(it == songs.end()){
@@ -12,4 +12,8 @@ bool SongWriter::insertSong(std::string title, int y, int m, int d, std::string 
         return true;
     }else
         return false;
+}
+
+bool SongWriter::insertSong(const Song &s) const{
+    return insertSong(s.getTitle(),s.getYear(),s.getMonth(),s.getDay(), s.getProd(),"");
 }

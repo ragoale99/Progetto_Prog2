@@ -14,21 +14,30 @@ int main(/*int argc, char *argv[]*/){
     return a.exec();*/
     Producer prod("a","b","a");
     prod.insertSong("canzone1", 1990,20,2);
+
     Singer sing("s", "pw", "lable");
     sing.insertSong("canzone2", 1990,20,2, "prod", "write");
+
     SongWriter songwr("sw", "pw", "lbl");
     songwr.insertSong("canzone3", 200,12,12,"prod2","");
-    prod.insertSong("canzone4", 1990,20,2);
-    prod.insertSong("canzone5", 1990,20,2);
+
+    Song canzone4("canzone4",2,2,2,"prod","sw","sw");
+    songwr.insertSong(canzone4);
+
+    sing.insertSong("canzone5", 1990,20,2, "producer", "writer");
+
     std::cout<<*(Artist::songs[0])<<std::endl;
     std::cout<<*(Artist::songs[1])<<std::endl;
     std::cout<<*(Artist::songs[2])<<std::endl;
     std::cout<<*(Artist::songs[3])<<std::endl;
+    std::cout<<*(Artist::songs[4])<<std::endl;
     std::cout<<prod.insertSong("canzone4", 1990,20,2)<<std::endl;
+
     Client c("us","pw");
-    std::vector<Song*> s = c.searchArtist("a");
+    std::vector<Song*> s = c.searchArtist("s");
     std::cout<<*(s[0])<<std::endl;
     std::cout<<*(s[1])<<std::endl;
-    std::cout<<*(s[2])<<std::endl;
 
+    std::cout<<songwr.deleteSong(canzone4);
+    std::cout<<*(Artist::songs[3])<<std::endl;
 }

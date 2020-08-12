@@ -9,7 +9,7 @@ Writer::Writer(std::string us,  std::string pw, std::string lbl) : Account(us,pw
 }
 
 
-bool Writer::insertSong(std::string title, int y, int m, int d, std::string prod, std::string sing){
+bool Writer::insertSong(std::string title, int y, int m, int d, std::string prod, std::string sing) const{
     Song* s = new Song(title, y, m, d, prod, sing, username);
     vector<Song*>::iterator it = searchSong(*s);
     if(it == songs.end()){
@@ -17,5 +17,9 @@ bool Writer::insertSong(std::string title, int y, int m, int d, std::string prod
         return true;
     }else
         return false;
+}
+
+bool Writer::insertSong(const Song &s) const{
+    return insertSong(s.getTitle(),s.getYear(),s.getMonth(),s.getDay(),s.getProd(),s.getSinger());
 }
 

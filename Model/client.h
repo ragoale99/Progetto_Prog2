@@ -6,10 +6,10 @@
 #include <vector>
 using std::vector;
 
-class Client : virtual public Account{
+class Client : public Account{
 public:
     Client(string us, string pw);
-    acc getType();
+    acc getType() const;
     vector<Song*> searchArtist(string) const;
 };
 

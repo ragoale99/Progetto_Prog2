@@ -11,7 +11,7 @@ class Account{
 public:
     Account();
     Account(string us, string pw, acc t);
-    virtual acc getType() = 0;
+    virtual acc getType() const = 0;
     inline static vector<Song*> songs;
     static vector<Song*>::iterator searchSong(const Song&);
 private:
