@@ -59,7 +59,6 @@ public:
     Const_Iterator begin() const;
     Const_Iterator end() const;
 };
-#endif // CONTAINER_H
 
 template<class T>
 Container<T>::Container() : ptr(nullptr), size(0), dim(0) {}
@@ -215,3 +214,4 @@ const T& Container<T>::Const_Iterator::operator *() const {
     return *punt;
 }
 
+#endif // CONTAINER_H
