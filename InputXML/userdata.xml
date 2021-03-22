@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UTENTI>
+    <ADMIN>
+        <nome>admin</nome>
+        <password>admin</password>
+    </ADMIN>
+    <ADMIN>
+        <nome>a</nome>
+        <password>a</password>
+    </ADMIN>
+    <STANDARD>
+        <nome>Samuele</nome>
+        <password>Samuele</password>
+    </STANDARD>
+    <STANDARD>
+        <nome>Alessandro</nome>
+        <password>Alessandro</password>
+    </STANDARD>
+    <WRITER>
+        <nome>Lazza</nome>
+        <password>lazza</password>
+        <label>Machete</label>
+        <salary>1900</salary>
+    </WRITER>
+    <SINGER>
+        <nome>Gue</nome>
+        <password>gue</password>
+        <label>BHMG</label>
+        <salary>2200</salary>
+    </SINGER>
+    <WRITER>
+        <nome>Marracash</nome>
+        <password>marra</password>
+        <label>Universal</label>
+        <salary>1800</salary>
+    </WRITER>
+    <WRITER>
+        <nome>FabriFibra</nome>
+        <password>fibra</password>
+        <label>Universal</label>
+        <salary>1800</salary>
+    </WRITER>
+    <PRODUCER>
+        <nome>Charlie Charles</nome>
+        <password>charlie</password>
+        <label>BHMG</label>
+        <salary>2000</salary>
+    </PRODUCER>
+    <SONGWRITER>
+        <nome>Salmo</nome>
+        <password>salmo</password>
+        <label>Machete</label>
+        <salary>2100</salary>
+    </SONGWRITER>
+    <PRODUCER>
+        <nome>Tha Supreme</nome>
+        <password>thasup</password>
+        <label>Machete</label>
+        <salary>1200</salary>
+    </PRODUCER>
+    <SONGWRITER>
+        <nome>ss</nome>
+        <password>ss</password>
+        <label>ss</label>
+        <salary>2000</salary>
+    </SONGWRITER>
+</UTENTI>
